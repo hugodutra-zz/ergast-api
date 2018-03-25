@@ -6,8 +6,10 @@ import { getSeasonData, getSeasonChampion } from '../helpers/api';
 import { populateSeasonData } from '../actions';
 
 export function* performSeasonRequest(action) {
+    // debouce the api call to avoid multiple requests
     yield call(delay, 1000);
 
+    // making request to get season results and season champion in parallel using all() 
     try {
         const [resultsResponse, championResponse] = yield all([
             call(getSeasonData, action.payload.year),
@@ -15,11 +17,14 @@ export function* performSeasonRequest(action) {
         ]);
 
         const seasonData = {};
-
+        // iterating over the api response for season results 
+        // and getting only the information that is useful for the application to have a cleaner redux store
         seasonData.results = resultsResponse.map(item => {
             const circuitData = {};
             circuitData.circuitName = item.Circuit.circuitName;
             circuitData.winnerId = item.Results[0].Driver.driverId;
+
+            // concatenating to get full name 
             circuitData.winnerName = `${item.Results[0].Driver.givenName} ${item.Results[0].Driver.familyName}`;
 
             return circuitData;
@@ -29,9 +34,11 @@ export function* performSeasonRequest(action) {
         seasonData.championName = `${championResponse.Driver.givenName} ${championResponse.Driver.familyName}`;
 
         seasonData.seasonYear = action.payload.year;
-
+        
+        // calling action creator to pupulate redux store
         yield put(populateSeasonData(seasonData));
     } catch(e) {
+        // shows alert in case the request fails
         alert('Could not fetch season information.');
     }
 }

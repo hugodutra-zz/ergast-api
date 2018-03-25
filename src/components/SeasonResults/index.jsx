@@ -14,6 +14,7 @@ export function SeasonResults(props: PropsTypes) {
         seasonChampionId,
     } = props.season;
 
+    // renders season results maping array passed by props
     const renderSeasonResults = () => {
         return results.map((item) => {
             return (
@@ -23,13 +24,18 @@ export function SeasonResults(props: PropsTypes) {
                 >   
                     <div className="pure-u-3-4">
                         <h3 className="email-subject">{ item.circuitName }</h3>
-                        <p className="email-desc">Winner: { item.winnerName } { item.winnerId === seasonChampionId ? <span>⭐</span> : null }</p>
+                        <p className="email-desc">
+                            Winner: { item.winnerName }
+                            {/* adds a star emoji in case the winner of the race is also season champion */}
+                            { item.winnerId === seasonChampionId ? <span role="img" aria-label="champion start">⭐</span> : null }
+                        </p>
                     </div>
                 </li>
             )
         })
     }
 
+    // in case results array is empty we dont render this component
     if (!results.length) {
         return null;
     }
@@ -37,8 +43,11 @@ export function SeasonResults(props: PropsTypes) {
     return (
         <div id='season-results'>
             <ul id="list" className="pure-u-1">
+                {/* calls method that renders season races results */}
                 { renderSeasonResults() }
             </ul>
+
+            {/* extra divs required for styling purpose using purecss */}
             <div id="main" className="pure-u-1">
                 <div className="email-content">
                     <div className="pure-u-2-2">

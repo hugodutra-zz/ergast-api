@@ -2,7 +2,6 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import logo from './logo.svg';
 import './App.css';
 
 import rootReducer from './reducers';
@@ -22,6 +21,7 @@ const mainStore = createStore(
 sagaMiddleware.run(mainSaga);
 
 export default function App() {
+    // wrapping component into Redux Provider HOC
     return (
         <Provider store={mainStore}>
             <MainApp />

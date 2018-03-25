@@ -9,7 +9,9 @@ const initialState = {
 
 export default function (state = initialState, action) {
     const { type, payload } = action;
+    // creating new object to avoid mutability problems
     const newState = Object.assign({}, state);
+
     switch (type) {
         case POPULATE_SEASON_DATA:
             newState.seasonYear = payload.seasonYear;

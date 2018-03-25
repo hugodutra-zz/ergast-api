@@ -10,9 +10,13 @@ type PropsTypes = {
 }
 
 export function YearsList(props: PropsTypes) {
+
     const renderYears = () => {
+        // defining an array of 11 elements using Array.from
+        // to be able to iterate using map and return the <li>'s 
         const arr = Array.from({ length: 11 }, (value, key) => key);
 
+        // years will be a list of <li> rendering the years
         const years =  arr.map((key, index) => {
             const currentYear = 2005 + index;
             return (
@@ -21,7 +25,7 @@ export function YearsList(props: PropsTypes) {
                     className="pure-menu-item"
                 >
                     <a
-                        href="#"
+                        href={ `#${currentYear}` }
                         className="pure-menu-link"
                         onClick={ () => props.fetchSeasonData(currentYear) }
                     >
@@ -35,10 +39,12 @@ export function YearsList(props: PropsTypes) {
     }
 
     return (
+        // those divs are required to apply the styling from Purecss
         <div id="nav" className="pure-u">
             <div className="nav-inner">
                 <div className="pure-menu">
                     <ul className="pure-menu-list">
+                        {/* calling renderYears method to render the list of years */}
                         { renderYears() }
                     </ul>
                 </div>
