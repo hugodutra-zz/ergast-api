@@ -7,7 +7,7 @@ import { YearsList } from './index';
 it('Should render years list', () => {
     const spy = jest.fn();
     const wrapper = shallow(<YearsList fetchSeasonData={ spy } />);
-    const button2015 = wrapper.find('li').last().find('button');
+    const button2015 = wrapper.find('li').last().find('a');
 
     expect(wrapper.find('li').length).toEqual(11);
     expect(wrapper.find('li').first()).toIncludeText('2005');

@@ -10,12 +10,17 @@ export function YearsList(props) {
         const years =  arr.map((key, index) => {
             const currentYear = 2005 + index;
             return (
-                <li key={ currentYear }>
-                    <button
+                <li
+                    key={ currentYear }
+                    className="pure-menu-item"
+                >
+                    <a
+                        href="#"
+                        className="pure-menu-link"
                         onClick={ () => props.fetchSeasonData(currentYear) }
                     >
                         { currentYear }
-                    </button>
+                    </a>
                 </li>
             )
         });
@@ -24,9 +29,15 @@ export function YearsList(props) {
     }
 
     return (
-        <ul>
-            { renderYears() }
-        </ul>
+        <div id="nav" className="pure-u">
+            <div className="nav-inner">
+                <div className="pure-menu">
+                    <ul className="pure-menu-list">
+                        { renderYears() }
+                    </ul>
+                </div>
+            </div>
+        </div>
     )
 }
 

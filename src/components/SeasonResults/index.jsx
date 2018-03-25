@@ -13,9 +13,14 @@ export function SeasonResults(props) {
     const renderSeasonResults = () => {
         return results.map((item) => {
             return (
-                <li key={ item.circuitName }>
-                    <h3>{ item.circuitName }</h3>
-                    <p>Winner: { item.winnerName } { item.winnerId === seasonChampionId ? <span>⭐</span> : null }</p>
+                <li
+                    key={ item.circuitName }
+                    className="email-item pure-g"
+                >   
+                    <div className="pure-u-3-4">
+                        <h3 className="email-subject">{ item.circuitName }</h3>
+                        <p className="email-desc">Winner: { item.winnerName } { item.winnerId === seasonChampionId ? <span>⭐</span> : null }</p>
+                    </div>
                 </li>
             )
         })
@@ -26,12 +31,18 @@ export function SeasonResults(props) {
     }
 
     return (
-        <div>
-            <h1>{ seasonYear }</h1>
-            <h2>Season winner: { seasonChampionName } </h2>
-            <ul>
+        <div id='season-results'>
+            <ul id="list" className="pure-u-1">
                 { renderSeasonResults() }
             </ul>
+            <div id="main" className="pure-u-1">
+                <div className="email-content">
+                    <div className="pure-u-2-2">
+                        <h1 className="email-content-title">{ seasonYear }</h1>
+                        <h2>Season winner: { seasonChampionName } </h2>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

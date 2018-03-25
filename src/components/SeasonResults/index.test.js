@@ -47,7 +47,7 @@ it('Should render if results are populated', () => {
 
     const wrapper = shallow(<SeasonResults season={{ ...season }} />);
 
-    expect(wrapper.find('div').length).toEqual(1);
+    expect(wrapper.find('div#season-results').length).toEqual(1);
     expect(wrapper.find('h1')).toIncludeText('2015');
     expect(wrapper.find('h2')).toIncludeText('Sebastian Vettel');
     expect(wrapper.find('ul').length).toEqual(1);

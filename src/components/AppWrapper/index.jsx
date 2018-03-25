@@ -5,7 +5,7 @@ import SeasonResults from '../SeasonResults';
 class MainApp extends Component {
     render() {
         return (
-            <div>
+            <div id="layout" className="content pure-g">
                 <YearsList />
                 <SeasonResults />
             </div>
