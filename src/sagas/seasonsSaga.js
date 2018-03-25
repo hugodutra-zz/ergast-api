@@ -17,7 +17,6 @@ function* performSeasonRequest(action) {
         const seasonData = {};
 
         seasonData.results = resultsResponse.map(item => {
-            console.log(item)
             const circuitData = {};
             circuitData.circuitName = item.Circuit.circuitName;
             circuitData.winnerId = item.Results[0].Driver.driverId;

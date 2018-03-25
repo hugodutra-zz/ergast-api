@@ -1,7 +1,8 @@
+// @flow
 import React from 'react';
 import { connect } from 'react-redux';
 
-function SeasonResults(props) {
+export function SeasonResults(props) {
     const {
         seasonYear,
         results,

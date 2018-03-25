@@ -10,7 +10,6 @@ const initialState = {
 export default function (state = initialState, action) {
     const { type, payload } = action;
     const newState = Object.assign({}, state);
-    
     switch (type) {
         case POPULATE_SEASON_DATA:
             newState.seasonYear = payload.seasonYear;
@@ -20,6 +19,6 @@ export default function (state = initialState, action) {
 
             return newState;
         default:
-            return newState;
+            return state;
     }
 }

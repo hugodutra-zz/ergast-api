@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 
 import { fetchSeasonData } from '../../actions';
 
-function YearsList(props) {
+export function YearsList(props) {
+    const handleClick = (year) => {
+        props.fetchSeasonData(year);
+    }
+
     const renderYears = () => {
         const arr = Array.from({ length: 11 }, (value, key) => key);
 
@@ -12,7 +16,7 @@ function YearsList(props) {
             return (
                 <li key={ currentYear }>
                     <button
-                        onClick={ () => props.fetchSeasonData(currentYear) }
+                        onClick={ () => handleClick(currentYear) }
                     >
                         { currentYear }
                     </button>
