@@ -5,7 +5,7 @@ import { REQUEST_YEAR_DATA } from '../constants';
 import { getSeasonData, getSeasonChampion } from '../helpers/api';
 import { populateSeasonData } from '../actions';
 
-function* performSeasonRequest(action) {
+export function* performSeasonRequest(action) {
     yield call(delay, 1000);
 
     try {
@@ -32,7 +32,6 @@ function* performSeasonRequest(action) {
 
         yield put(populateSeasonData(seasonData));
     } catch(e) {
-        console.log(e)
         alert('Could not fetch season information.');
     }
 }
