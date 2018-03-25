@@ -1,9 +1,15 @@
+// @flow
+
 import React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchSeasonData } from '../../actions';
 
-export function YearsList(props) {
+type PropsTypes = {
+    fetchSeasonData: number => void,
+}
+
+export function YearsList(props: PropsTypes) {
     const renderYears = () => {
         const arr = Array.from({ length: 11 }, (value, key) => key);
 

@@ -1,8 +1,12 @@
+// @flow
+
 import React, { Component } from 'react';
 import YearsList from '../YearsList';
 import SeasonResults from '../SeasonResults';
 
-class MainApp extends Component {
+type PropsTypes = {};
+
+class MainApp extends Component<PropsTypes> {
     render() {
         return (
             <div id="layout" className="content pure-g">

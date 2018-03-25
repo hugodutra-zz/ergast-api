@@ -2,7 +2,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-export function SeasonResults(props) {
+type PropsTypes = {
+    season: Object,
+}
+
+export function SeasonResults(props: PropsTypes) {
     const {
         seasonYear,
         results,
